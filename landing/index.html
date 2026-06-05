@@ -135,8 +135,11 @@
     display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-lg);
   }
   .mentor-photo .ph { color: var(--fg-on-dark-3); font-size: .85rem; text-align: center; padding: 1rem; }
-  .mentor-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .mentor-photo img { width: 86%; max-width: 230px; border-radius: var(--r-md); box-shadow: var(--shadow-lg); }
   .mentor-grid p { color: var(--fg-2); font-size: 1.08rem; margin-bottom: 1rem; }
+  .cred { font-family: var(--font-sans); font-size: .8rem; font-weight: 600; color: var(--navy-700); background: var(--gold-300); padding: .35rem .8rem; border-radius: var(--r-pill); }
+  .mentor-cap { text-align: center; font-family: var(--font-sans); font-weight: 700; color: var(--navy-700); margin-top: .9rem; }
+  .mentor-cap small { display: block; font-weight: 500; font-size: .82rem; color: var(--fg-3); }
 
   /* ---------- Stack / included ---------- */
   .included { background: #fff; }
@@ -319,17 +322,23 @@
 <!-- ============ MENTOR ============ -->
 <section>
   <div class="wrap mentor-grid">
-    <div class="mentor-photo reveal">
-      <!-- TODO: reemplazar por foto real de la mentora -->
-      <div class="ph">[ FOTO DE LA MENTORA ]<br/>placeholder on-brand</div>
+    <div class="reveal">
+      <div class="mentor-photo">
+        <img src="assets/mentor.png" alt="Tu mentora · MM Menttor" />
+      </div>
+      <p class="mentor-cap">Tu mentora · MM Menttor<small>Ingeniera Civil Informática</small></p>
     </div>
     <div class="reveal">
       <span class="eyebrow">Quién te guía</span>
       <h2 class="section-title">No soy perfecta, pero tengo un <span class="gold">sistema</span>.</h2>
-      <p>Llevo más de 10 años gestionando proyectos corporativos. Soy mamá y esposa — sé lo que es querer avanzar con el tiempo y la cabeza llenos.</p>
-      <p>Por eso no enseño teoría bonita. Enseño el método exacto que uso para pasar de la idea al proyecto terminado, paso a paso, sin depender de la motivación del día.</p>
-      <p class="muted"><strong>Entrénala para que vea oportunidades.</strong> Eso hace el Sistema con tu forma de trabajar.</p>
-      <span class="todo">TODO: confirmar bio/credenciales reales de la mentora.</span>
+      <p>Soy <strong>Ingeniera Civil Informática</strong> y llevo más de 10 años liderando proyectos de tecnología — a nivel local e internacional, con equipos grandes y objetivos que no perdonan.</p>
+      <p>He estado en la trinchera: implementaciones y actualizaciones de ERP (<strong>SAP</strong> y <strong>Dynamics 365</strong>), liderando todos los frentes del proyecto hasta cumplir la meta. Con diplomados en Administración de Proyectos y de Negocios, aprendí algo simple — el resultado no depende del talento, depende del <span class="gold">método</span>.</p>
+      <p>Por eso creé el Sistema: para darte la misma estructura que uso cada día. Planificar, priorizar, ejecutar y sostener el impulso — paso a paso, sin improvisar.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.25rem;">
+        <span class="cred">10+ años en proyectos TI</span>
+        <span class="cred">SAP · Dynamics 365</span>
+        <span class="cred">Diplomados en Proyectos y Negocios</span>
+      </div>
     </div>
   </div>
 </section>
