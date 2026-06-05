@@ -283,6 +283,26 @@ footer a { color: var(--gold-400); }
   font-size: .82rem; padding: .5rem .8rem; border-radius: var(--r-sm); margin-top: .75rem; display: inline-block;
 }
 
+/* ---------- Enterprise contact form ---------- */
+.contact { background: linear-gradient(160deg, var(--navy-700), var(--navy-900)); color: #fff; }
+.contact .eyebrow { color: var(--gold-400); }
+.contact .section-title { color: #fff; }
+.contact .lead { color: var(--fg-on-dark-2); }
+.form-card { max-width: 680px; margin: 2.5rem auto 0; background: #fff; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); padding: 2.25rem; }
+.form-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+.form-row { display: grid; gap: .4rem; margin-bottom: 1.1rem; }
+.form-row label { font-family: var(--font-sans); font-weight: 600; font-size: .85rem; color: var(--navy-700); }
+.form-row input, .form-row textarea, .form-row select {
+  font-family: var(--font-body); font-size: 1rem; color: var(--fg-1);
+  padding: .7rem .85rem; border: 1.5px solid var(--line-mist); border-radius: var(--r-sm);
+  background: var(--mist); transition: border-color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
+}
+.form-row input:focus, .form-row textarea:focus, .form-row select:focus { outline: none; border-color: var(--gold-500); background: #fff; }
+.form-row textarea { resize: vertical; min-height: 110px; }
+.form-card .btn { width: 100%; justify-content: center; margin-top: .5rem; }
+.form-note { text-align: center; font-size: .85rem; color: var(--fg-3); margin-top: .9rem; }
+.form-note a { color: var(--navy-600); font-weight: 600; }
+
 /* ---------- Reveal animation ---------- */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity var(--dur-slow) var(--ease-out), transform var(--dur-slow) var(--ease-out); }
 .reveal.in { opacity: 1; transform: none; }
@@ -301,6 +321,7 @@ footer a { color: var(--gold-400); }
   .feature { grid-template-columns: 44px 1fr; gap: 1rem; }
   .feature .fnum { width: 44px; height: 44px; font-size: 1.1rem; }
   .tracks { grid-template-columns: 1fr; }
+  .form-grid2 { grid-template-columns: 1fr; }
   .brand-lockup img { height: 38px; }
   .topbar-actions { gap: .5rem; }
   .ig-top .ig-label { display: none; }

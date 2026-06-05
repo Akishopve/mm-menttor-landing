@@ -80,7 +80,7 @@
           <li><span class="arrow">→</span> Programas de liderazgo y gestión a la medida</li>
         </ul>
         <div class="track-cta">
-          <a href="https://www.instagram.com/mmmenttor/" target="_blank" rel="noopener noreferrer" class="btn btn-white">Solicita una propuesta <span class="arrow">→</span></a>
+          <a href="#empresas" class="btn btn-white">Solicita una propuesta <span class="arrow">→</span></a>
         </div>
       </div>
       <div class="track reveal">
@@ -288,6 +288,42 @@
   </div>
 </section>
 
+<!-- ============ EMPRESAS / FORMULARIO ============ -->
+<section class="contact" id="empresas">
+  <div class="wrap">
+    <div class="center reveal">
+      <span class="eyebrow">Para empresas</span>
+      <h2 class="section-title">Capacitemos a tu equipo</h2>
+      <p class="lead">Cuéntanos sobre tu empresa y tu proyecto. Te enviamos una propuesta a medida.</p>
+    </div>
+    <form class="form-card reveal" id="enterprise-form">
+      <div class="form-grid2">
+        <div class="form-row"><label for="nombre">Nombre y apellido</label><input id="nombre" name="nombre" type="text" required /></div>
+        <div class="form-row"><label for="empresa">Empresa</label><input id="empresa" name="empresa" type="text" required /></div>
+      </div>
+      <div class="form-grid2">
+        <div class="form-row"><label for="email">Email corporativo</label><input id="email" name="email" type="email" required /></div>
+        <div class="form-row"><label for="telefono">Teléfono / WhatsApp (opcional)</label><input id="telefono" name="telefono" type="tel" /></div>
+      </div>
+      <div class="form-row">
+        <label for="equipo">Tamaño del equipo a capacitar</label>
+        <select id="equipo" name="equipo">
+          <option value="1-10">1–10 personas</option>
+          <option value="11-50">11–50 personas</option>
+          <option value="51-200">51–200 personas</option>
+          <option value="200+">Más de 200 personas</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label for="mensaje">¿Qué necesitas?</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu proyecto, los retos de tu equipo o el tipo de capacitación que buscas." required></textarea>
+      </div>
+      <button type="submit" class="btn">Enviar solicitud <span class="arrow">→</span></button>
+      <p class="form-note">También puedes escribirnos directo a <a href="mailto:mmmenttor@gmail.com">mmmenttor@gmail.com</a></p>
+    </form>
+  </div>
+</section>
+
 <!-- ============ FAQ ============ -->
 <section style="background:#fff;">
   <div class="wrap">
@@ -310,13 +346,17 @@
   <div class="wrap">
     <img src="assets/logo-mm-menttor-white.png" alt="MM Menttor" />
     <p>Consultoría y preparación profesional · Gestión de proyectos con método.</p>
-    <p style="margin-top:1.25rem;">
+    <div style="display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem;">
       <a href="https://www.instagram.com/mmmenttor/" target="_blank" rel="noopener noreferrer" class="social-link">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
         @mmmenttor
       </a>
-    </p>
-    <p style="margin-top:1.25rem;"><a href="#comprar">Consigue el Sistema →</a></p>
+      <a href="mailto:mmmenttor@gmail.com" class="social-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
+        mmmenttor@gmail.com
+      </a>
+    </div>
+    <p style="margin-top:1.5rem;"><a href="#empresas">Para empresas →</a> &nbsp;·&nbsp; <a href="#comprar">Consigue el Sistema →</a></p>
     <p class="small">© 2026 MM Menttor. Todos los derechos reservados.</p>
   </div>
 </footer>
@@ -327,6 +367,25 @@
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: .12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Formulario empresas -> abre el correo con todo prellenado hacia mmmenttor@gmail.com
+  const ef = document.getElementById('enterprise-form');
+  if (ef) {
+    ef.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const get = (id) => (document.getElementById(id).value || '').trim();
+      const subject = 'Solicitud de propuesta - ' + (get('empresa') || 'Empresa');
+      const body =
+        'Nombre: ' + get('nombre') + '\n' +
+        'Empresa: ' + get('empresa') + '\n' +
+        'Email: ' + get('email') + '\n' +
+        'Telefono: ' + get('telefono') + '\n' +
+        'Tamano del equipo: ' + get('equipo') + '\n\n' +
+        'Mensaje:\n' + get('mensaje');
+      window.location.href = 'mailto:mmmenttor@gmail.com?subject=' +
+        encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    });
+  }
 </script>
 </body>
 </html>
