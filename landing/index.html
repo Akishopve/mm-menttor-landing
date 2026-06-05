@@ -159,6 +159,23 @@
   .stack-item p { font-size: .9rem; color: var(--fg-2); }
   .stack-item .val { font-family: var(--font-sans); font-size: .85rem; color: var(--navy-300); white-space: nowrap; }
 
+  /* ---------- Kits ---------- */
+  .kit-featured { background: #fff; border-radius: var(--r-xl); box-shadow: var(--shadow-lg); border: 1px solid var(--line-mist); overflow: hidden; max-width: 880px; margin: 2.5rem auto 0; }
+  .kit-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.75rem 2rem; background: var(--navy-700); color: #fff; }
+  .kit-head .kname { font-family: var(--font-sans); font-weight: 800; font-size: 1.6rem; line-height: 1.1; margin-top: .6rem; }
+  .kit-head .ktag { color: var(--fg-on-dark-2); font-size: .98rem; margin-top: .25rem; }
+  .kit-badge { font-family: var(--font-sans); font-weight: 700; font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--navy-900); background: var(--gold-500); padding: .35rem .75rem; border-radius: var(--r-pill); display: inline-block; }
+  .kit-body { padding: 2rem; }
+  .kit-price-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1.75rem; }
+  .kit-price { font-family: var(--font-sans); font-weight: 800; font-size: 1.9rem; color: var(--navy-700); }
+  .kit-price small { font-size: .9rem; font-weight: 600; color: var(--fg-3); }
+  .kits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 880px; margin: 1.5rem auto 0; }
+  .kit-soon { background: var(--mist); border: 1px dashed var(--navy-300); border-radius: var(--r-lg); padding: 1.75rem; text-align: center; transition: border-color var(--dur-med) var(--ease-out); }
+  .kit-soon:hover { border-color: var(--gold-500); }
+  .kit-soon .badge-soon { font-family: var(--font-sans); font-weight: 700; font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--navy-300); }
+  .kit-soon h3 { font-family: var(--font-sans); font-weight: 700; color: var(--fg-2); margin: .55rem 0; font-size: 1.15rem; }
+  .kit-soon p { color: var(--fg-3); font-size: .92rem; }
+
   /* ---------- Mistakes ---------- */
   .mistake { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; align-items: stretch; margin-bottom: 1rem; }
   .mistake .bad, .mistake .good { padding: 1.25rem 1.4rem; border-radius: var(--r-md); }
@@ -243,6 +260,9 @@
     .hero-card { order: -1; }
     .stack-item { grid-template-columns: auto 1fr; }
     .stack-item .val { grid-column: 2; }
+    .kits-grid { grid-template-columns: 1fr; }
+    .kit-price-row { flex-direction: column; align-items: stretch; }
+    .kit-price-row .btn { justify-content: center; }
   }
 </style>
 </head>
@@ -265,7 +285,7 @@
       <p class="sub">La guía paso a paso de MM Menttor para planificar y <span class="navy-em">terminar</span> tus proyectos — sin improvisar, sin perder el foco.</p>
       <div class="hero-cta-row">
         <a href="#comprar" class="btn">Consigue el Sistema <span class="arrow">→</span></a>
-        <a href="#incluye" class="btn btn-ghost">Ver qué incluye</a>
+        <a href="#kits" class="btn btn-ghost">Ver los kits</a>
       </div>
       <p class="hero-note">Pago único de $25 · Acceso inmediato · En español</p>
     </div>
@@ -370,20 +390,53 @@
   </div>
 </section>
 
-<!-- ============ INCLUYE / STACK ============ -->
-<section class="included" id="incluye">
+<!-- ============ KITS ============ -->
+<section class="included" id="kits">
   <div class="wrap">
     <div class="center reveal">
-      <span class="eyebrow">Todo lo que incluye</span>
-      <h2 class="section-title">El Sistema completo, en una guía</h2>
-      <p class="lead">5 herramientas tácticas para que pases del caos a la ejecución — paso a paso.</p>
+      <span class="eyebrow">Kits descargables</span>
+      <h2 class="section-title">Los Kits del Sistema MM Menttor</h2>
+      <p class="lead">Herramientas listas para descargar y aplicar. Empieza por el primero.</p>
     </div>
-    <div class="stack-list">
-      <div class="stack-item reveal"><span class="num">1</span><div><h4>Auditoría de Viabilidad</h4><p>Antes de invertir tiempo, valida si el proyecto se sostiene. Claridad antes que prisa.</p></div><span class="val">Incluido</span></div>
-      <div class="stack-item reveal"><span class="num">2</span><div><h4>Matriz de Priorización Estratégica</h4><p>Decide qué hacer primero — y qué soltar. Foco real, no lista interminable.</p></div><span class="val">Incluido</span></div>
-      <div class="stack-item reveal"><span class="num">3</span><div><h4>Cronograma de Aceleración</h4><p>Tu plan con hitos y fechas reales para avanzar rápido sin perder el rumbo.</p></div><span class="val">Incluido</span></div>
-      <div class="stack-item reveal"><span class="num">4</span><div><h4>Manual de Implementación Táctica</h4><p>El paso a paso de ejecución: del plan a las tareas hechas, sin improvisar.</p></div><span class="val">Incluido</span></div>
-      <div class="stack-item reveal"><span class="num">5</span><div><h4>Guía para no perder el Impulso</h4><p>Cómo sostener el ritmo cuando baja la motivación — para terminar lo que empiezas.</p></div><span class="val">Incluido</span></div>
+
+    <!-- Kit 01 — Mentori Express (destacado) -->
+    <div class="kit-featured reveal">
+      <div class="kit-head">
+        <div>
+          <span class="kit-badge">Kit 01 · Disponible</span>
+          <div class="kname">Mentori Express</div>
+          <div class="ktag">El Sistema completo, en una guía.</div>
+        </div>
+        <span class="kit-badge" style="background:var(--gold-300);">Incluido</span>
+      </div>
+      <div class="kit-body">
+        <p class="lead" style="margin-bottom:.25rem;">5 herramientas tácticas para que pases del caos a la ejecución — paso a paso.</p>
+        <div class="stack-list" style="margin-top:1.5rem;">
+          <div class="stack-item reveal"><span class="num">1</span><div><h4>Auditoría de Viabilidad</h4><p>Antes de invertir tiempo, valida si el proyecto se sostiene. Claridad antes que prisa.</p></div><span class="val">Incluido</span></div>
+          <div class="stack-item reveal"><span class="num">2</span><div><h4>Matriz de Priorización Estratégica</h4><p>Decide qué hacer primero — y qué soltar. Foco real, no lista interminable.</p></div><span class="val">Incluido</span></div>
+          <div class="stack-item reveal"><span class="num">3</span><div><h4>Cronograma de Aceleración</h4><p>Tu plan con hitos y fechas reales para avanzar rápido sin perder el rumbo.</p></div><span class="val">Incluido</span></div>
+          <div class="stack-item reveal"><span class="num">4</span><div><h4>Manual de Implementación Táctica</h4><p>El paso a paso de ejecución: del plan a las tareas hechas, sin improvisar.</p></div><span class="val">Incluido</span></div>
+          <div class="stack-item reveal"><span class="num">5</span><div><h4>Guía para no perder el Impulso</h4><p>Cómo sostener el ritmo cuando baja la motivación — para terminar lo que empiezas.</p></div><span class="val">Incluido</span></div>
+        </div>
+        <div class="kit-price-row">
+          <div class="kit-price">$25 <small>USD · pago único</small></div>
+          <a href="#comprar" class="btn">Consigue el kit <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kits futuros — módulos listos para subir información -->
+    <div class="kits-grid">
+      <div class="kit-soon reveal">
+        <span class="badge-soon">Kit 02 · Próximamente</span>
+        <h3>Tu próximo kit</h3>
+        <p>Módulo listo para subir la información de tu siguiente kit descargable.</p>
+      </div>
+      <div class="kit-soon reveal">
+        <span class="badge-soon">Kit 03 · Próximamente</span>
+        <h3>Tu próximo kit</h3>
+        <p>Módulo listo para subir la información de tu siguiente kit descargable.</p>
+      </div>
     </div>
   </div>
 </section>
