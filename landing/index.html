@@ -174,6 +174,14 @@
   }
   .ph-testi strong { color: var(--navy-700); }
 
+  /* ---------- Real testimonials ---------- */
+  .testi { display: flex; flex-direction: column; gap: 1.1rem; }
+  .testi .mark { font-family: var(--font-display); font-weight: 700; font-size: 2.6rem; line-height: .6; color: var(--gold-500); }
+  .testi blockquote { font-size: .98rem; line-height: 1.6; color: var(--fg-2); font-style: italic; }
+  .testi figcaption { margin-top: auto; padding-top: .5rem; border-top: 1px solid var(--line-mist); }
+  .testi .name { display: block; font-family: var(--font-sans); font-weight: 700; color: var(--fg-1); font-size: .98rem; }
+  .testi .role { display: block; font-size: .85rem; color: var(--navy-300); }
+
   /* ---------- Price / offer ---------- */
   .offer-card {
     max-width: 560px; margin: 0 auto; background: #fff;
@@ -327,14 +335,25 @@
   <div class="wrap">
     <div class="center reveal">
       <span class="eyebrow">Lo que dicen</span>
-      <h2 class="section-title">Mujeres que ya pasaron del caos al foco</h2>
+      <h2 class="section-title">Líderes y equipos que pasaron del caos al método</h2>
     </div>
     <div class="grid-3" style="margin-top:2.5rem;">
-      <div class="ph-testi reveal"><strong>[TESTIMONIO 1]</strong><br/>Resultado concreto en las palabras de tu clienta. Nombre · contexto.</div>
-      <div class="ph-testi reveal"><strong>[TESTIMONIO 2]</strong><br/>Antes/después corto y específico. Nombre · contexto.</div>
-      <div class="ph-testi reveal"><strong>[TESTIMONIO 3]</strong><br/>Una frase potente de una clienta real. Nombre · contexto.</div>
+      <figure class="card testi reveal">
+        <span class="mark">"</span>
+        <blockquote>Los kits online de MM Menttor fueron una sorpresa muy grata. Esperaba el típico curso lleno de diapositivas y me encontré con casos reales, plantillas listas para usar y ejercicios prácticos. Mi equipo se capacitó a su propio ritmo y, lo mejor, empezamos a aplicar lo aprendido en proyectos reales casi de inmediato.</blockquote>
+        <figcaption><span class="name">Jorge Méndez</span><span class="role">Líder de Proyectos · sector financiero</span></figcaption>
+      </figure>
+      <figure class="card testi reveal">
+        <span class="mark">"</span>
+        <blockquote>Tomé la capacitación para gerentes y se nota que quienes la diseñaron han estado en la trinchera gestionando proyectos. No es teoría de manual: te enseñan las habilidades que de verdad usas cuando un proyecto se complica. Salí con mucha más seguridad para liderar y tomar decisiones.</blockquote>
+        <figcaption><span class="name">Valentina Ortega</span><span class="role">Coordinadora de Gestión · sector salud</span></figcaption>
+      </figure>
+      <figure class="card testi reveal">
+        <span class="mark">"</span>
+        <blockquote>Capacitamos a todo nuestro equipo de proyectos con MM Menttor y el cambio fue evidente. Pasamos de improvisar a tener un método y, sobre todo, las habilidades para ejecutarlo. La inversión se pagó sola con el primer proyecto que entregamos a tiempo.</blockquote>
+        <figcaption><span class="name">Ricardo Pacheco</span><span class="role">Gerente General · manufactura</span></figcaption>
+      </figure>
     </div>
-    <p class="center muted" style="margin-top:1.25rem;font-size:.85rem;">Placeholders — pásame 3 testimonios reales de clientas de Menttor y los integro.</p>
   </div>
 </section>
 
