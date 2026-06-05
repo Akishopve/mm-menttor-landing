@@ -1,0 +1,16 @@
+# PRODUCTO DE PAGO — NUNCA publicar (entregables del Sistema, $25)
+fotos/
+
+# Bundle de diseño (pesado, no va al deploy)
+_design_drop/
+
+# Config local del harness
+.claude/
+
+# Notas internas de negocio (no publicar)
+CLAUDE.md
+landing-page-brief.md
+
+# OS
+Thumbs.db
+.DS_Store
