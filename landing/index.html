@@ -297,6 +297,9 @@
       <p class="lead">Cuéntanos sobre tu empresa y tu proyecto. Te enviamos una propuesta a medida.</p>
     </div>
     <form class="form-card reveal" id="enterprise-form">
+      <input type="hidden" name="access_key" value="410784cf-1835-4fa6-8d28-55a7d510857c" />
+      <input type="hidden" name="from_name" value="MM Menttor — Formulario Empresas" />
+      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
       <div class="form-grid2">
         <div class="form-row"><label for="nombre">Nombre y apellido</label><input id="nombre" name="nombre" type="text" required /></div>
         <div class="form-row"><label for="empresa">Empresa</label><input id="empresa" name="empresa" type="text" required /></div>
@@ -318,8 +321,8 @@
         <label for="mensaje">¿Qué necesitas?</label>
         <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos sobre tu proyecto, los retos de tu equipo o el tipo de capacitación que buscas." required></textarea>
       </div>
-      <button type="submit" class="btn">Enviar solicitud <span class="arrow">→</span></button>
-      <p class="form-note">También puedes escribirnos directo a <a href="mailto:mmmenttor@gmail.com">mmmenttor@gmail.com</a></p>
+      <button type="submit" class="btn" id="ef-submit">Enviar solicitud <span class="arrow">→</span></button>
+      <p class="form-note" id="ef-status">También puedes escribirnos directo a <a href="mailto:mmmenttor@gmail.com">mmmenttor@gmail.com</a></p>
     </form>
   </div>
 </section>
@@ -368,22 +371,40 @@
   }, { threshold: .12 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-  // Formulario empresas -> abre el correo con todo prellenado hacia mmmenttor@gmail.com
+  // Formulario empresas -> envio automatico via Web3Forms (sin recargar)
   const ef = document.getElementById('enterprise-form');
   if (ef) {
-    ef.addEventListener('submit', function (e) {
+    const status = document.getElementById('ef-status');
+    const btn = document.getElementById('ef-submit');
+    ef.addEventListener('submit', async function (e) {
       e.preventDefault();
-      const get = (id) => (document.getElementById(id).value || '').trim();
-      const subject = 'Solicitud de propuesta - ' + (get('empresa') || 'Empresa');
-      const body =
-        'Nombre: ' + get('nombre') + '\n' +
-        'Empresa: ' + get('empresa') + '\n' +
-        'Email: ' + get('email') + '\n' +
-        'Telefono: ' + get('telefono') + '\n' +
-        'Tamano del equipo: ' + get('equipo') + '\n\n' +
-        'Mensaje:\n' + get('mensaje');
-      window.location.href = 'mailto:mmmenttor@gmail.com?subject=' +
-        encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      const data = Object.fromEntries(new FormData(ef));
+      data.subject = 'Solicitud de propuesta - ' + (data.empresa || 'Empresa');
+      const original = btn.innerHTML;
+      btn.disabled = true;
+      btn.textContent = 'Enviando…';
+      try {
+        const res = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const json = await res.json();
+        if (json.success) {
+          ef.reset();
+          btn.style.display = 'none';
+          status.innerHTML = '✓ ¡Solicitud enviada! Te contactamos muy pronto.';
+          status.style.color = 'var(--success)';
+          status.style.fontWeight = '600';
+        } else {
+          throw new Error(json.message || 'error');
+        }
+      } catch (err) {
+        btn.disabled = false;
+        btn.innerHTML = original;
+        status.innerHTML = 'No se pudo enviar. Escríbenos directo a <a href="mailto:mmmenttor@gmail.com">mmmenttor@gmail.com</a>';
+        status.style.color = 'var(--danger)';
+      }
     });
   }
 </script>
