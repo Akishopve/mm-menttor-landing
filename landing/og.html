@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{width:1200px;height:630px;overflow:hidden}
+  .og{
+    width:1200px;height:630px;position:relative;overflow:hidden;
+    background:#0F2438;
+    font-family:'Hanken Grotesk',sans-serif;
+    padding:72px 80px;display:flex;flex-direction:column;justify-content:space-between;
+  }
+  .og::before{content:"";position:absolute;right:-120px;top:-160px;width:560px;height:560px;
+    background:radial-gradient(circle,rgba(234,181,52,.20),transparent 64%)}
+  .og::after{content:"";position:absolute;left:-160px;bottom:-200px;width:520px;height:520px;
+    background:radial-gradient(circle,rgba(115,146,172,.14),transparent 66%)}
+  .lock{display:flex;align-items:center;gap:18px;position:relative;z-index:1}
+  .iso{width:74px;height:74px;border-radius:18px;background:#EAB534;display:grid;place-items:center}
+  .iso b{font-family:'Archivo';font-weight:900;font-size:34px;color:#0F2438;letter-spacing:-.05em}
+  .word .n{font-family:'Archivo';font-weight:900;font-size:38px;color:#fff;letter-spacing:-.04em;line-height:1}
+  .word .m{font-family:'Archivo';font-weight:700;font-size:13px;letter-spacing:.42em;color:#F3D586;margin-top:5px}
+  .mid{position:relative;z-index:1}
+  .eyebrow{font-family:'Archivo';font-weight:700;font-size:18px;letter-spacing:.32em;text-transform:uppercase;color:#EAB534;margin-bottom:22px}
+  h1{font-family:'Archivo';font-weight:900;font-size:74px;line-height:.98;letter-spacing:-.04em;color:#fff;max-width:980px}
+  h1 em{font-style:normal;color:#EAB534}
+  .foot{display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+  .foot .tag{font-size:21px;color:#D7E0E8;font-weight:500}
+  .foot .ig{font-family:'Archivo';font-weight:700;font-size:19px;color:#EAB534}
+</style>
+</head>
+<body>
+<div class="og">
+  <div class="lock">
+    <div class="iso"><b>MM</b></div>
+    <div class="word"><div class="n">Menttor</div><div class="m">GESTIÓN DE PROYECTOS</div></div>
+  </div>
+  <div class="mid">
+    <div class="eyebrow">Del caos a la ejecución · con sistema</div>
+    <h1>Gestión de proyectos que <em>sí se culminan.</em></h1>
+  </div>
+  <div class="foot">
+    <div class="tag">Consultoría · Capacitación · Kits descargables</div>
+    <div class="ig">@mmmenttor</div>
+  </div>
+</div>
+</body>
+</html>
