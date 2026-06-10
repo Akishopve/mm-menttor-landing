@@ -16,3 +16,6 @@ Thumbs.db
 .DS_Store
 
 .vercel
+
+# Log de auditoría de /safe-install (local)
+.ccmb/
