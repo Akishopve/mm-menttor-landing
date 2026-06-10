@@ -66,6 +66,34 @@
   </div>
 </section>
 
+<!-- ============ LEAD MAGNET / RECURSO GRATIS ============ -->
+<section class="optin" id="recurso-gratis">
+  <div class="wrap optin-grid">
+    <div class="reveal">
+      <span class="eyebrow">Recurso gratis</span>
+      <h2 class="section-title">Tu mentor de proyectos con IA — gratis</h2>
+      <p class="lead">Recibe el kit para convertir a Claude o ChatGPT en un mentor que aplica el método MM Menttor: del caos a la ejecución, paso a paso.</p>
+      <ul class="optin-list">
+        <li><span class="arrow">→</span> Una <strong>skill</strong> de Claude Code lista para instalar</li>
+        <li><span class="arrow">→</span> Un <strong>prompt</strong> listo para copiar y pegar</li>
+        <li><span class="arrow">→</span> Una <strong>guía corta</strong> para usarlo hoy mismo</li>
+      </ul>
+    </div>
+    <form class="form-card reveal" id="leadmagnet-form">
+      <div class="form-row">
+        <label for="lm-nombre">Nombre</label>
+        <input id="lm-nombre" name="first_name" type="text" autocomplete="given-name" />
+      </div>
+      <div class="form-row">
+        <label for="lm-email">Email</label>
+        <input id="lm-email" name="email_address" type="email" autocomplete="email" required />
+      </div>
+      <button type="submit" class="btn" id="lm-submit">Quiero el mentor IA gratis <span class="arrow">→</span></button>
+      <p class="form-note" id="lm-status">Sin spam. Te llega al instante.</p>
+    </form>
+  </div>
+</section>
+
 <!-- ============ DUAL AUDIENCE / TRACKS ============ -->
 <section style="background:#fff;">
   <div class="wrap">
@@ -413,6 +441,39 @@
         btn.innerHTML = original;
         status.innerHTML = 'No se pudo enviar. Escríbenos directo a <a href="mailto:mmmenttor@gmail.com">mmmenttor@gmail.com</a>';
         status.style.color = 'var(--danger)';
+      }
+    });
+  }
+
+  // Lead magnet -> suscripcion a Kit (ConvertKit) y redireccion al entregable
+  const KIT_FORM_ID = '9548057'; // FORM ID de Kit (ConvertKit)
+  const lm = document.getElementById('leadmagnet-form');
+  if (lm) {
+    const lmStatus = document.getElementById('lm-status');
+    const lmBtn = document.getElementById('lm-submit');
+    lm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(lm));
+      const original = lmBtn.innerHTML;
+      lmBtn.disabled = true;
+      lmBtn.textContent = 'Enviando…';
+      try {
+        const res = await fetch('https://app.kit.com/forms/' + KIT_FORM_ID + '/subscriptions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ email_address: data.email_address, first_name: data.first_name || '' })
+        });
+        const json = await res.json().catch(() => ({}));
+        if (res.ok && (json.status === 'success' || json.status === 'quarantined' || !json.error)) {
+          window.location.href = '/recursos/';
+        } else {
+          throw new Error((json && json.message) || 'error');
+        }
+      } catch (err) {
+        lmBtn.disabled = false;
+        lmBtn.innerHTML = original;
+        lmStatus.innerHTML = 'No se pudo suscribir. Escríbenos a <a href="mailto:mmmenttor@gmail.com">mmmenttor@gmail.com</a>';
+        lmStatus.style.color = 'var(--danger)';
       }
     });
   }
