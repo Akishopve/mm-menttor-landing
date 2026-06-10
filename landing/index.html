@@ -465,7 +465,7 @@
         });
         const json = await res.json().catch(() => ({}));
         if (res.ok && (json.status === 'success' || json.status === 'quarantined' || !json.error)) {
-          window.location.href = '/recursos/';
+          window.location.href = '/recursos.html';
         } else {
           throw new Error((json && json.message) || 'error');
         }
