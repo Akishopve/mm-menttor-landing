@@ -71,12 +71,12 @@
   <div class="wrap optin-grid">
     <div class="reveal">
       <span class="eyebrow">Recurso gratis</span>
-      <h2 class="section-title">Tu mentor de proyectos con IA — gratis</h2>
-      <p class="lead">Recibe el kit para convertir a Claude o ChatGPT en un mentor que aplica el método MM Menttor: del caos a la ejecución, paso a paso.</p>
+      <h2 class="section-title">Tu kit de gestión de proyectos — gratis</h2>
+      <p class="lead">Recibe la <strong>Guía de Gestión de Proyectos</strong> en PDF y el <strong>Kit de Inicio Rápido</strong> en Excel — el método MM Menttor para pasar del caos a la ejecución, paso a paso.</p>
       <ul class="optin-list">
-        <li><span class="arrow">→</span> Una <strong>skill</strong> de Claude Code lista para instalar</li>
-        <li><span class="arrow">→</span> Un <strong>prompt</strong> listo para copiar y pegar</li>
-        <li><span class="arrow">→</span> Una <strong>guía corta</strong> para usarlo hoy mismo</li>
+        <li><span class="arrow">→</span> Una <strong>guía en PDF</strong> con el método en 5 fases</li>
+        <li><span class="arrow">→</span> Un <strong>Kit en Excel</strong>: Charter, RACI, Roadmap y más plantillas</li>
+        <li><span class="arrow">→</span> <strong>Listas para usar</strong> y aplicar hoy mismo</li>
       </ul>
     </div>
     <form class="form-card reveal" id="leadmagnet-form">
@@ -88,7 +88,7 @@
         <label for="lm-email">Email</label>
         <input id="lm-email" name="email_address" type="email" autocomplete="email" required />
       </div>
-      <button type="submit" class="btn" id="lm-submit">Quiero el mentor IA gratis <span class="arrow">→</span></button>
+      <button type="submit" class="btn" id="lm-submit">Quiero el kit gratis <span class="arrow">→</span></button>
       <p class="form-note" id="lm-status">Sin spam. Te llega al instante.</p>
     </form>
   </div>
@@ -458,17 +458,14 @@
       lmBtn.disabled = true;
       lmBtn.textContent = 'Enviando…';
       try {
-        const res = await fetch('https://app.kit.com/forms/' + KIT_FORM_ID + '/subscriptions', {
+        // Envio CORS-safe a Kit (ConvertKit): respuesta opaca, redirigimos siempre tras enviar
+        await fetch('https://app.kit.com/forms/' + KIT_FORM_ID + '/subscriptions', {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ email_address: data.email_address, first_name: data.first_name || '' })
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams({ email_address: data.email_address, first_name: data.first_name || '' })
         });
-        const json = await res.json().catch(() => ({}));
-        if (res.ok && (json.status === 'success' || json.status === 'quarantined' || !json.error)) {
-          window.location.href = '/recursos.html';
-        } else {
-          throw new Error((json && json.message) || 'error');
-        }
+        window.location.href = '/recursos.html';
       } catch (err) {
         lmBtn.disabled = false;
         lmBtn.innerHTML = original;
