@@ -1,0 +1,8 @@
+# Tratar binarios como binarios (sin conversion de fin de linea)
+*.pdf  binary
+*.xlsx binary
+*.xlsm binary
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
