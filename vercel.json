@@ -5,6 +5,7 @@
   ],
   "routes": [
     { "src": "/", "dest": "/landing/index.html" },
+    { "src": "/mentori-express(/.*)?", "status": 308, "headers": { "Location": "/mentory-express/" } },
     { "src": "/(.*)", "dest": "/landing/$1" }
   ]
 }
