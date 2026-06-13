@@ -203,8 +203,9 @@ a.kit-featured:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba
 .kit-price small { font-size: .9rem; font-weight: 600; color: var(--fg-3); }
 .kit-link-hint { display: inline-flex; align-items: center; gap: .4rem; font-family: var(--font-sans); font-weight: 600; color: var(--gold-600); }
 .kits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.5rem; margin: 2.5rem auto 0; }
-.kit-soon { background: var(--mist); border: 1px dashed var(--navy-300); border-radius: var(--r-lg); padding: 1.75rem; text-align: center; transition: border-color var(--dur-med) var(--ease-out); }
-.kit-soon:hover { border-color: var(--gold-500); }
+.kit-soon { display: block; text-decoration: none; background: var(--mist); border: 1px dashed var(--navy-300); border-radius: var(--r-lg); padding: 1.75rem; text-align: center; transition: border-color var(--dur-med) var(--ease-out), transform var(--dur-med) var(--ease-out); }
+a.kit-soon:hover { border-color: var(--gold-500); transform: translateY(-3px); }
+a.kit-soon:hover h3 { color: var(--navy-700); }
 .kit-soon .badge-soon { font-family: var(--font-sans); font-weight: 700; font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--navy-300); }
 .kit-soon h3 { font-family: var(--font-sans); font-weight: 700; color: var(--fg-2); margin: .55rem 0; font-size: 1.15rem; }
 .kit-soon p { color: var(--fg-3); font-size: .92rem; }
