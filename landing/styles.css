@@ -202,12 +202,18 @@ a.kit-featured:hover { transform: translateY(-4px); box-shadow: 0 20px 50px rgba
 .kit-price { font-family: var(--font-sans); font-weight: 800; font-size: 1.9rem; color: var(--navy-700); }
 .kit-price small { font-size: .9rem; font-weight: 600; color: var(--fg-3); }
 .kit-link-hint { display: inline-flex; align-items: center; gap: .4rem; font-family: var(--font-sans); font-weight: 600; color: var(--gold-600); }
-.kits-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 880px; margin: 1.5rem auto 0; }
+.kits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.5rem; margin: 2.5rem auto 0; }
 .kit-soon { background: var(--mist); border: 1px dashed var(--navy-300); border-radius: var(--r-lg); padding: 1.75rem; text-align: center; transition: border-color var(--dur-med) var(--ease-out); }
 .kit-soon:hover { border-color: var(--gold-500); }
 .kit-soon .badge-soon { font-family: var(--font-sans); font-weight: 700; font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--navy-300); }
 .kit-soon h3 { font-family: var(--font-sans); font-weight: 700; color: var(--fg-2); margin: .55rem 0; font-size: 1.15rem; }
 .kit-soon p { color: var(--fg-3); font-size: .92rem; }
+.kit-available { display: block; text-decoration: none; background: #fff; border-style: solid; border-color: var(--gold-500); box-shadow: var(--shadow-sm); transition: transform var(--dur-med) var(--ease-out), box-shadow var(--dur-med) var(--ease-out), border-color var(--dur-med) var(--ease-out); }
+.kit-available:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: var(--gold-600); }
+.kit-available h3 { color: var(--navy-700); }
+.kit-available p { color: var(--fg-2); }
+.kit-cta { display: inline-block; margin-top: .9rem; font-family: var(--font-sans); font-weight: 700; font-size: .9rem; color: var(--gold-600); }
+.kit-available:hover .kit-cta { color: var(--gold-700); }
 
 /* ---------- Kit detail page ---------- */
 .backlink { display: inline-flex; align-items: center; gap: .4rem; font-family: var(--font-sans); font-weight: 600; font-size: .9rem; color: var(--navy-700); text-decoration: none; }
