@@ -19,3 +19,9 @@ Thumbs.db
 
 # Log de auditoría de /safe-install (local)
 .ccmb/
+
+# Scratch temporal (rebranding de docs, fuentes, imágenes extraídas del producto) — NUNCA publicar
+.tmp_fonts/
+.tmp_ref/
+.tmp_ref2/
+.tmp_*/
